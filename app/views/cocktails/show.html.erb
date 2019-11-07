@@ -1,0 +1,11 @@
+<nav class="navbar navbar-light bg-light mb-4">
+  <a class="navbar-brand">Cocktails 🍸</a>
+  <%= link_to 'Home', cocktails_path, :class => 'nav-link' %>
+</nav>
+
+ <div class="container">
+    <h2><%= @cocktail.name %></h2>
+    <p>Created at: <%= @cocktail.created_at %></p>
+    <p>Updated at: <%= @cocktail.updated_at %></p>
+    <hr>
+</div>
