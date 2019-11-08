@@ -5,5 +5,5 @@ class Dose < ApplicationRecord
   validates :description, presence: true
 
   # we now validate the uniqueness pair for :cocktail and ingredient together
-  validates :cocktail, uniqueness: { scope: :ingredient }
+  validates :cocktail, uniqueness: { scope: [:ingredient] }
 end

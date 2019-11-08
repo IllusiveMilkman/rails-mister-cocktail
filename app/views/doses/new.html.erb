@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light mb-4">
+  <a class="navbar-brand">Cocktails 🍸</a>
+  <%= link_to 'Home', cocktails_path, :class => 'nav-link' %>
+</nav>
+
+ <div class="container w-50 mt-4">
+  <h2>Add a new dose for <%= @cocktail.name %></h2>
+  <br>
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.input :description %>
+    <%= f.association :ingredient %>
+    <%= f.submit "Add a dose", class: "btn btn-primary" %>
+  <% end %>
+ </div>

@@ -1,14 +1,18 @@
 <nav class="navbar navbar-light bg-light mb-4">
   <a class="navbar-brand">Cocktails 🍸</a>
-  <%= link_to 'New Cocktail', new_cocktail_path, :class => 'nav-link' %>
+  <%= link_to 'New Cocktail', new_cocktail_path, :class => 'nav-link custom_cocktail' %>
 </nav>
 
-<div class="container">
-  <% @cocktails.each do |cocktail|%>
-    <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
-    <p>Created at: <%= cocktail.created_at %></p>
-    <p>Updated at: <%= cocktail.updated_at %></p>
-    <hr>
-  <% end %>
+<div class="container col-md-6 offset-md-3">
+  <div class="search-row offset-md-3 mb-4">
+    <form class="form-inline my-2 my-lg-0">
+      <input style="border-radius: 5px;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button style="color: black; background-color: white; border-color: gray; border-radius: 5px;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+    <% @cocktails.each do |cocktail|%>
+      <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+      <hr>
+    <% end %>
 </div>
 
