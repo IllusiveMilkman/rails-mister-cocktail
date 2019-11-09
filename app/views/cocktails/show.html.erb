@@ -8,7 +8,7 @@
       <h2><%= @cocktail.name %></h2>
     </div>
 
-    <div class="container mt-4 new-card <%= @doses.count == 0 ? "hidden" : ""%>">
+    <div class="container mt-4 new-card <%= @doses.count == 0 ? "hidden" : ""%>"  >
       <div class="container">
         <h2 class="mb-4">Ingredients</h2>
         <table class="table table-bordered table-doses">
@@ -25,7 +25,7 @@
                 <td><%= dose.description %></td>
                 <td><%= dose.ingredient.name %></td>
                 <td>
-                  <%= link_to '🗑', cocktail_dose_path(params[:id], dose),
+                  <%= link_to '🗑', cocktail_dose_path(@cocktail.id, dose),
                     method: :delete,
                     data: { confirm: "Are you sure you want to delete this task?" } %>
                 </td>
@@ -47,24 +47,24 @@
     </div>
 
     <div class="container mt-4 new-card stars">
-      <h2>Add a review</h2>
-      <br>
-      <p class="mb-2">Rate this cocktail</p>
-      <div class="rating">
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
-      </div>
-      <br>
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
-        <%= f.input :description %>
-        <%= f.association :ingredient %>
-        <%= f.submit "Add a dose", class: "btn btn-primary" %>
+      <h2 class="mb-4">Add a review</h2>
+      <%= simple_form_for [@cocktail, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating, collection: [0, 1, 2, 3, 4, 5] %>
+        <%= f.submit "Add a rating", class: "btn btn-primary" %>
       <% end %>
+      <div>
+        <p class="mt-4">to-do:</p>
+        <!-- To implement star rating system - clickable stars and avg compute-->
+        <%= icon('fas fa-star', id: 'empty-star', class: 'empty-star-class') %>
+        <%= icon('far fa-star', id: 'empty-star', class: 'empty-star-class') %>
+        <%= icon('far fa-star', id: 'empty-star', class: 'empty-star-class') %>
+        <%= icon('far fa-star', id: 'empty-star', class: 'empty-star-class') %>
+        <%= icon('far fa-star', id: 'empty-star', class: 'empty-star-class') %>
+      </div>
     </div>
 
 </div>
 
 
+<!-- To-do: Display reviews in show page -->

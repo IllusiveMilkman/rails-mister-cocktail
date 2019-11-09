@@ -7,6 +7,8 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.find(params[:id])
     @doses = Dose.where(cocktail_id: @cocktail.id)
     @dose = Dose.new
+    @review = Review.new
+    @reviews = Review.where(cocktail_id: @cocktail.id)
   end
 
   def create
@@ -21,6 +23,7 @@ class CocktailsController < ApplicationController
 
   def new
     @cocktail = Cocktail.new
+    @dose = Dose.new
   end
 
   private
@@ -28,4 +31,5 @@ class CocktailsController < ApplicationController
   def cocktail_params
     params.require(:cocktail).permit(:name)
   end
+
 end
