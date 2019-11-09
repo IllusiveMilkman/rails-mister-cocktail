@@ -1,0 +1,7 @@
+<!-- old method to dislay cocktails in a list-->
+<div>
+  <% @cocktails.each do |cocktail|%>
+    <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+    <hr>
+  <% end %>
+</div>

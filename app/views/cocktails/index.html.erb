@@ -3,16 +3,40 @@
   <%= link_to 'New Cocktail', new_cocktail_path, :class => 'nav-link custom_cocktail' %>
 </nav>
 
-<div class="container col-md-6 offset-md-3">
-  <div class="search-row offset-md-3 mb-4">
-    <form class="form-inline my-2 my-lg-0">
-      <input style="border-radius: 5px;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button style="color: black; background-color: white; border-color: gray; border-radius: 5px;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+<div class="container">
+  <div class="search-row d-flex justify-content-center">
+    <form class="form-inline text-center">
+      <input style="border-radius: 5px;" class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success btn-search-custom" type="submit">Search</button>
     </form>
   </div>
-    <% @cocktails.each do |cocktail|%>
-      <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
-      <hr>
-    <% end %>
 </div>
+
+<div class="cards">
+  <% @cocktails.each do |cocktail|%>
+    <!-- <div clas="col-md-3 m-4"> -->
+    <a href="<%= cocktail_path(cocktail) %>">
+      <div class="card-trip">
+        <%= image_tag("c1.jpg") %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= cocktail.name %></h2>
+            <!-- <p>Short description here!</p> -->
+            <div class="rating">
+              <span>☆</span>
+              <span>☆</span>
+              <span>☆</span>
+              <span>☆</span>
+              <span>☆</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- </div> -->
+  <% end %>
+</div>
+
+
+
 
